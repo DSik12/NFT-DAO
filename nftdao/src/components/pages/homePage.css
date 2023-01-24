@@ -1,0 +1,13 @@
+body{
+    background-color: #f5f5f5;
+}
+/* 
+.homePage{
+    height: 100vh;
+    background-color: #f5f5f5;
+} */
+
+.titleDisplay{
+    margin : 10vh 6vw;
+    padding : 5vw 0 0 0;
+}

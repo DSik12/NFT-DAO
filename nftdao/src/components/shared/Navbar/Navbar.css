@@ -1,5 +1,43 @@
+
+.Navbar{
+    width: 100vw;
+    height: 10vh;
+    padding: 0 2vw;
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(210, 217, 238);
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+    margin: 0 0 10vh 0;
+
+}
+
+.navTitles{
+    display: flex;
+    
+}
+
+
+.headingText{
+    font-size: 18px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #7f7f7f;
+    padding: 0 1vw;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+
 .rainbow{
-    margin: 40px 60px 0px 900px;
+    display: flex;
+    /* margin: 40px 60px 0px 900px; */
 }
 .button1 {
     background-color: #008CBA; /* Blue */
@@ -10,8 +48,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-top: 10px;
-    margin-left: 60px;
+    margin: 0 0 0 10px;
     border-radius: 2em;
   }
   

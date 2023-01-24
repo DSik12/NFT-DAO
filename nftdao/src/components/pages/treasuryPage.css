@@ -1,0 +1,96 @@
+body{
+    background-color: #f5f5f5;
+}
+
+/* .mainPage{
+    height: 100vh;
+    background-color: #f5f5f5;
+} */
+
+.treasuryBox{
+    width: 60vw;
+    height: 20vh;
+    margin: 20vh 20vw 0 20vw;
+    padding: 5vh 5vw ;
+    background-color: #e2b3b3;
+    border: 1px solid rgb(152, 161, 192);
+    border-radius: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.treasuryText{
+    font-size: 22px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #620b3f;
+}
+
+.treasuryAmount{
+    font-size: 28px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #000000;
+
+}
+
+.amountBox{
+    display: flex;
+    margin: 10vh 0 0 5vw;   
+    justify-content: center;
+    align-items: center; 
+}
+
+.amountText{
+    font-size: 22px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #000000;
+    width: fit-content;
+    height: inherit;
+    padding: 3vh 2vw;
+    background-color: #e2b3b3;
+    border-radius: 5vh;
+}
+
+.amountEntry{
+    width: 10vw;
+    height: 50px;
+    border: 1px solid #000000;
+    border-radius: 5vh;
+    margin: 0 0 0 5vw;
+    padding: 20px;
+    font-size: 22px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #000000;
+}
+
+.ethText{
+    font-size: 22px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #000000;
+    margin: 0 0 0 2vw;
+}
+
+.transactButton{
+    font-size: 22px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    width: 13vw;
+    padding: 2vh 3vw;
+    background-color: #395dab;
+    margin: 20vh 0 0 40vw;
+    border-radius: 5vh;
+    cursor: pointer;
+}

@@ -1,0 +1,41 @@
+.nftMainCard{
+    height: 55vh;
+    /* width: 40vw; */
+    background-color: #ffffff;
+    border: 1px solid rgb(152, 161, 192);
+    border-radius: 5vh ;
+    padding: 5vh;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.nftDetailsSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nftCardTitle{
+    font-size: 20px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #370944;
+    margin: 0 0 2vh 0;
+}
+
+.buyButton{
+    font-size: 18px;
+    line-height: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    width: 10vw;
+    padding: 2vh 2vw;
+    background-color: #395dab;
+    margin: 2vh 0 0 0;
+    border-radius: 5vh;
+    cursor: pointer;
+}
