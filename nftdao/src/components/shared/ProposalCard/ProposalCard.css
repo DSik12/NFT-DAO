@@ -1,0 +1,27 @@
+.proposalList{
+    border-style: dotted; 
+    margin: 0px 400px 30px 400px;
+}
+
+.proposalCard{
+    margin: 20px 70px 20px 70px;
+}
+
+.proposalCard div{
+    margin-top: 20px;
+}
+
+.proposalCard img{
+    border-radius: 50%;
+    width: 70px;
+}
+
+.proposalCard img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
+
+.proposalCard .status{
+    background-color: red;
+    border-radius: 10px;
+    margin-left: 20px;
+}

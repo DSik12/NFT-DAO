@@ -3,7 +3,6 @@ import {Navbar} from '../shared/Navbar/Navbar'
 import {TileCard} from '../shared/cards/tileCard'
 import Grid from '@mui/material/Grid';
 import { useHistory } from "react-router-dom";
-
 import './homePage.css'
 
 const Home = () => {
