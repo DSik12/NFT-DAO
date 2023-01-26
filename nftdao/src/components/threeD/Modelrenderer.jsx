@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-// import { OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import GltfModel from "./gltf";
 
 const ModelViewer = ({ modelPath, scale = 40, position = [0, 0, 0] }) => {
@@ -11,7 +11,7 @@ const ModelViewer = ({ modelPath, scale = 40, position = [0, 0, 0] }) => {
       <pointLight position={[-10, -10, -10]} />
       <Suspense fallback={null}>
         <GltfModel modelPath={modelPath} scale={scale} position={position} />
-        {/* <OrbitControls /> */}
+        <OrbitControls />
       </Suspense>
     </Canvas>
   );
