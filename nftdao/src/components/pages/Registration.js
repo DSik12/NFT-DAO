@@ -23,6 +23,7 @@ function Registration() {
       localStorage.setItem("UserPassword", JSON.stringify(password));
       setLogin(!login);
       // IPFS LOGIC ADD HERE {[EMAIL,PASSWORD]}
+      //{[name, email, password]}
       history2.push('/Login');
     }
   }
@@ -43,10 +44,10 @@ function Registration() {
       <div style={{margin:"150px 400px"}}>
         {" "}
         {login ? (
-          <form onSubmit={handleFormSubmit}>
-            <h3>Register</h3>
+          <form onSubmit={handleFormSubmit} >
+            <h3 style={{color: "white"}}>Register</h3>
             <div className="form-group">
-              <label>Name</label>
+              <label style={{color: "white"}}>Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -57,7 +58,7 @@ function Registration() {
             </div>
 
             <div className="form-group">
-              <label>Email</label>
+              <label style={{color: "white"}}>Email</label>
               <input
                 type="email"
                 className="form-control"
@@ -67,7 +68,7 @@ function Registration() {
             </div>
 
             <div className="form-group">
-              <label>Password</label>
+              <label style={{color: "white"}}>Password</label>
               <input
                 type="password"
                 className="form-control"
