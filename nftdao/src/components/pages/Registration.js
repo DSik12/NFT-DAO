@@ -1,7 +1,6 @@
-import { Navbar } from "../shared/Navbar/Navbar";
+import { SignNavBar } from "../shared/SignNavBar/SignNavBar.js";
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
-import Login from "./Login";
 import { useHistory } from "react-router-dom";
 
 function Registration() {
@@ -23,6 +22,7 @@ function Registration() {
       localStorage.setItem("UserEmail", JSON.stringify(email));
       localStorage.setItem("UserPassword", JSON.stringify(password));
       setLogin(!login);
+      // IPFS LOGIC ADD HERE {[EMAIL,PASSWORD]}
       history2.push('/Login');
     }
   }
@@ -38,7 +38,7 @@ function Registration() {
   return (
     <>
       <div>
-        <Navbar />
+        <SignNavBar />
       </div>
       <div style={{margin:"150px 400px"}}>
         {" "}

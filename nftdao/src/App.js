@@ -13,6 +13,7 @@ import Registration from "./components/pages/Registration";
 import Login from "./components/pages/Login";
 
 function App() {
+
   return (
     <div>
       <div id="threedcomp">
@@ -20,10 +21,10 @@ function App() {
       </div>
       <div id="remainingapp">
         <BrowserRouter>
-          <Switch>
+          <Switch> 
+            <Route exact path="/" component={Registration} />
             <Route path="/Home" component={Home} />
             <Route path="/Login" component={Login} />
-            <Route exact path="/" component={Registration} />
             <Route path="/Proposal" component={Proposal} />
             <Route path="/Create" component={Createpage} />
             <Route path="/Treasury" component={Treasurypage} />

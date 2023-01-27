@@ -40,12 +40,6 @@ export const Navbar = () => {
     <div className="Navbar">
         <div className="navTitles">
           <img src={daoImage} alt="logo" height= "50px" width= "50px" className="daoLogo" onClick= {() => navigateToRoute('/')}></img>
-          <div className="headingText" onClick= {() => navigateToRoute('/')}>
-            Registration
-          </div>
-          <div className="headingText" onClick= {() => navigateToRoute('/Login')}>
-            LogIn
-          </div>
           <div className="headingText" onClick= {() => navigateToRoute('/Home')}>
             Home
           </div>

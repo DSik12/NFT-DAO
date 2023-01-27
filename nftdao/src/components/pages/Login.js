@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
-import Home from "./Home";
-import {Navbar} from '../shared/Navbar/Navbar'
+import { SignNavBar } from "../shared/SignNavBar/SignNavBar";
 import { useHistory } from "react-router-dom";
 function Login() {
 
@@ -40,7 +39,7 @@ function Login() {
   return (
     <>
     <div>
-      <Navbar/>
+      <SignNavBar/>
     </div>
     <div style={{margin:"150px 300px"}}>
       {home ? (
