@@ -31,7 +31,7 @@ function App() {
             <Route path="/About" element={<Aboutpage />} />
             {/* <Route path="/views/:id" element={<Detailspage />} /> */}
             <Route path="/Nft" component={Nftpage} />
-            <Route path="/Delegate" element={<Delegatepage />} />
+            <Route path="/Delegate" component={Delegatepage}  />
             <Route path="*" element={<NoPageFound />}></Route>
           </Switch>
         </BrowserRouter>
