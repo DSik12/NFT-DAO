@@ -41,7 +41,7 @@ function Login() {
     <div>
       <SignNavBar/>
     </div>
-    <div style={{margin:"150px 300px", backgroundColor:"rgba(25, 0, 155, 0.5)"}}>
+    <div style={{margin:"150px 800px 0px 50px", backgroundColor:"rgba(25, 0, 155, 0.5)"}}>
       {home ? (
         <form onSubmit={handleLogin} style={{margin:"50px", padding: "100px 30px"}}>
           <h3 style={{color: "white"}}>LogIn</h3>

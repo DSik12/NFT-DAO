@@ -19,7 +19,7 @@ const Home = () => {
         <div className='titleDisplay'>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={6}   onClick= {() => navigateToRoute('/Create')}>
-              <TileCard title ={"Create Proposal"} description = {"Click to enter the details and create a proposal"} />
+              <TileCard style={{ background: "radial-gradient(circle at 10% 20%, rgb(222, 168, 248) 0%, rgb(168, 222, 248) 21.8%, rgb(189, 250, 205) 35.6%, rgb(243, 250, 189) 52.9%, rgb(250, 227, 189) 66.8%, rgb(248, 172, 172) 90%, rgb(254, 211, 252) 99.7%)"}} title ={"Create Proposal"} description = {"Click to enter the details and create a proposal"} />
             </Grid>
             <Grid item xs={6} onClick= {() => navigateToRoute('/Treasury')} >
               <TileCard title ={"Treasury"} description = {"View the DAO treasury and add funds to the treasury."} />

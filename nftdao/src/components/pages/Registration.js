@@ -41,7 +41,7 @@ function Registration() {
       <div>
         <SignNavBar />
       </div>
-      <div style={{margin:"150px 400px"}}>
+      <div style={{margin:"150px 900px 150px 70px",backgroundColor:"rgba(25, 0, 155, 0.3)",padding:"20px"}}>
         {" "}
         {login ? (
           <form onSubmit={handleFormSubmit} >
@@ -78,10 +78,10 @@ function Registration() {
             </div>
 
 
-            <button type="submit" onSubmit={handleClick} className="btn btn-dark btn-lg btn-block">
+            <button style={{ background: "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)" }} type="submit" onSubmit={handleClick} className="btn btn-dark btn-lg btn-block">
               Register
             </button>
-            <p onClick={navigateToLogin} className="forgot-password text-right">
+            <p style={{color: "white"}} onClick={navigateToLogin} className="forgot-password text-right">
               Already registered log in?
             </p>
             {flag && (
