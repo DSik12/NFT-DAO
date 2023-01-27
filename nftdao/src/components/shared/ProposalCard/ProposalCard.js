@@ -3,8 +3,8 @@ import pic1 from "../../../assets/AntPicOne.jpg";
 import "./ProposalCard.css";
 const ProposalCard = () => {
   return (
-    <div className="proposalList">
-      <div className="proposalCard">
+    <div className="proposalList" >
+      <div className="proposalCard" >
         <div>
           <img src={pic1}></img>
           <span style={{ marginLeft: "40px" }}>

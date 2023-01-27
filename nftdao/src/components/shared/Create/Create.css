@@ -1,47 +1,57 @@
 .formTitle {
-    margin: 150px 0px 80px 400px;
+    margin: 150px 400px 80px 500px;
 }
+
+.formTitle h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer;
+  }
+  
+  .formTitle  h1 span {
+    transition: 0.5s ease-out;
+  }
+  .formTitle h1:hover span:nth-child(1) {
+    margin-right: 5px;
+  }
+  .formTitle h1:hover span:nth-child(1):after {
+    content: "'";
+  }
+  .formTitle h1:hover span:nth-child(2) {
+    margin-left: 30px;
+  }
+  .formTitle h1:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+  }
 
 .formTitle p {
     font-size: 30px;
 }
+
+
 .proposal{
-    border-style: dotted;
-    margin: 100px 400px 80px 400px;
+    margin: 100px 500px 80px 500px;
     padding: 50px; 
-    background-color:aquamarine;
-    border-radius: 30px;
-}
-.formProposal{
-    margin-left: 50px;
-}
-
-.formProposal button{
-    background-color: bisque;
-    border-radius: 10px;
-    margin: 20px 0px 0px 100px;
-    width: 300px;
-}
-.formProposal button:hover{
-    background-color: blue;
-}
-
-.formProposal input {
+    background: radial-gradient(circle at 10% 20%, rgb(222, 168, 248) 0%, rgb(168, 222, 248) 21.8%, rgb(189, 250, 205) 35.6%, rgb(243, 250, 189) 52.9%, rgb(250, 227, 189) 66.8%, rgb(248, 172, 172) 90%, rgb(254, 211, 252) 99.7%);
     border-radius: 20px;
-    width: 350px;
-    text-align: center;
+}
+
+.proposal:hover{
+    background: linear-gradient(111.1deg, rgb(251, 140, 0) 3.2%, rgb(98, 0, 234) 90.3%);
 }
 
 .formProposal label {
-    text-align: center;
     font-size: 15px;
-    margin-bottom: 20px;
-    font-weight: 700;
+    font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .formProposal textarea {
-    border-radius: 20px;
-    width: 500px;
+    border-radius: 10px;
+    width: 410px;
     border-color: #2d2d2d;
 }

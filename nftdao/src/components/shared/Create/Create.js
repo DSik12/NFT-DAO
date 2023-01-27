@@ -57,44 +57,45 @@ export const Create = () => {
 
   return (
     <>
-      <div className="formTitle" style={{ borderColor: "#2d2d2d" }}>
-        <p>Enter the required details in order to create a proposal</p>
+      <div className="formTitle">
+      <h1>
+      <span>CRE</span>ATE <span>PROPOSAL</span>
+    </h1>
       </div>
       <div className='proposal'>
         <div className="formProposal">
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="form-group">
               <label onChange={handleAddress}>To</label>
               <input
                 placeholder="Receiver address"
+                className="form-control"
                 style={{
                   borderColor: "#2d2d2d",
                   backgroundColor: "light-blue",
-                  marginLeft: "110px",
+                  
                 }}
                 value={Address}
                 onChange={handleAddress}
                 required={true}
               />
             </div>
-            <div>
+            <div className="form-group">
               <label>Amount</label>
               <input
                 placeholder="Amount in Ether"
+                className="form-control"
                 style={{
                   borderColor: "#2d2d2d",
                   backgroundColor: "light-blue",
-                  marginLeft: "70px",
                 }}
                 onChange={handleEther}
                 value={Ether}
                 required={true}
               />
             </div>
-            <div>
+            <div className="form-group">
               <label htmlFor="message">Description</label>
-            </div>
-            <div>
               <textarea
                 id="message"
                 rows="6"
@@ -108,7 +109,7 @@ export const Create = () => {
 
             {!Loading ? (
               <div>
-                <button style={{ borderColor: "#2d2d2d" }}>Create</button>
+                <button className="btn btn-dark btn-lg btn-block" style={{ background: "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)" }}>Create</button>
               </div>
             ) : (
               <p></p>

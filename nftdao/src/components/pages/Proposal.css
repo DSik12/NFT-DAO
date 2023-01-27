@@ -2,3 +2,57 @@
     margin: 150px 300px 100px 300px;
     text-align: center;
 }
+
+
+.proposalHeading h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer;
+  }
+  
+  .proposalHeading  h1 span {
+    transition: 0.5s ease-out;
+  }
+  .proposalHeading h1:hover span:nth-child(1) {
+    margin-right: 5px;
+  }
+  .proposalHeading h1:hover span:nth-child(1):after {
+    content: "'";
+  }
+  .proposalHeading h1:hover span:nth-child(2) {
+    margin-left: 30px;
+  }
+  .proposalHeading h1:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+  }
+
+  
+.proposalHeading h4 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer;
+  }
+  
+  .proposalHeading  h4 span {
+    transition: 0.5s ease-out;
+  }
+  .proposalHeading h4:hover span:nth-child(1) {
+    margin-right: 5px;
+  }
+  .proposalHeading h4:hover span:nth-child(1):after {
+    content: "'";
+  }
+  .proposalHeading h4:hover span:nth-child(2) {
+    margin-left: 30px;
+  }
+  .proposalHeading h4:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+  }
