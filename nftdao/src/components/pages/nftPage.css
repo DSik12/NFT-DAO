@@ -2,3 +2,61 @@ body{
     background-color: #f5f5f5;
 }
 
+.nftHeading{
+    margin: 150px 300px 20px 300px;
+    text-align: center;
+}
+
+
+.nftHeading h1 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer;
+  }
+  
+  .nftHeading  h1 span {
+    transition: 0.5s ease-out;
+  }
+  .nftHeading h1:hover span:nth-child(1) {
+    margin-right: 5px;
+  }
+  .nftHeading h1:hover span:nth-child(1):after {
+    content: "'";
+  }
+  .nftHeading h1:hover span:nth-child(2) {
+    margin-left: 30px;
+  }
+  .nftHeading h1:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+  }
+
+  
+.nftHeading h4 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 7px;
+    cursor: pointer;
+  }
+  
+  .nftHeading  h4 span {
+    transition: 0.5s ease-out;
+  }
+  .nftHeading h4:hover span:nth-child(1) {
+    margin-right: 5px;
+  }
+  .nftHeading h4:hover span:nth-child(1):after {
+    content: "'";
+  }
+  .nftHeading h4:hover span:nth-child(2) {
+    margin-left: 30px;
+  }
+  .nftHeading h4:hover span {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff;
+  }

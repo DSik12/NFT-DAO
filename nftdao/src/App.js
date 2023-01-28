@@ -16,10 +16,10 @@ function App() {
 
   return (
     <div>
-      <div id="threedcomp">
+      {/* <div id="threedcomp">
         <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
-      </div>
-      <div id="remainingapp">
+      </div> */}
+      <div >
         <BrowserRouter>
           <Switch> 
             <Route exact path="/" component={Registration} />

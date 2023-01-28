@@ -17,6 +17,15 @@ const NftPage = () => {
   return (
     <div>
         <Navbar/>
+        <div className="nftHeading">
+        <h1>
+          <span>OWN</span> THE <span>NFTs</span>
+        </h1>
+        <h4>
+          Become an <span> Integral part</span> of 
+          <span>AMAZING DAO</span>
+        </h4>
+      </div>
         <div className='titleDisplay'>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={3}>
