@@ -1,9 +1,16 @@
 import React from "react";
 import pic1 from "../../../assets/AntPicOne.jpg";
 import "./ProposalCard.css";
+import { useHistory } from "react-router-dom";
 const ProposalCard = () => {
+
+  const history4 = useHistory();
+  
+  function navigateToRoute1(route) {
+    history4.push(`ProposalDetails/${route}`);
+  }
   return (
-    <div className="proposalList" >
+    <div onClick = {() => navigateToRoute1('/0x98275ffddf84gfg873498708fhfjdshfjkk38ewrhjw')} className="proposalList" >
       <div className="proposalCard" >
         <div>
           <img src={pic1}></img>

@@ -1,6 +1,7 @@
 import "./App.css";
 import ModelViewer from "./components/threeD/Modelrenderer";
 import Home from "./components/pages/Home";
+import ProposalDetails from './components/pages/ProposalDetails'
 import Createpage from "./components/pages/Createpage";
 import Treasurypage from "./components/pages/Treasurypage";
 import Aboutpage from "./components/pages/Aboutpage";
@@ -24,6 +25,7 @@ function App() {
           <Switch> 
             <Route exact path="/" component={Registration} />
             <Route path="/Home" component={Home} />
+            <Route path="/ProposalDetails" component={ProposalDetails} />
             <Route path="/Login" component={Login} />
             <Route path="/Proposal" component={Proposal} />
             <Route path="/Create" component={Createpage} />
