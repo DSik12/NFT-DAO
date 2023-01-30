@@ -3,7 +3,6 @@ import { Alert } from "react-bootstrap";
 import { SignNavBar } from "../shared/SignNavBar/SignNavBar";
 import { useHistory } from "react-router-dom";
 function Login() {
-
   const history1 = useHistory();
   const [emaillog, setEmaillog] = useState(" ");
   const [passwordlog, setPasswordlog] = useState(" ");
@@ -12,17 +11,28 @@ function Login() {
 
   const [home, setHome] = useState(true);
 
-  function navigateToHome(){
-    history1.push('/Home');
+  function navigateToHome() {
+    history1.push("/Home");
   }
 
   function handleLogin(e) {
     e.preventDefault();
-    let pass = localStorage
-      .getItem("UserPassword")
-      .replace(/"/g, "");
+    let pass = localStorage.getItem("UserPassword").replace(/"/g, "");
     let mail = localStorage.getItem("UserEmail").replace(/"/g, "");
-    
+    const logindata = {
+      email: emaillog,
+      password: passwordlog,
+    };
+    const requestOptions = {
+      method: "POST",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(logindata),
+    };
+    fetch("http://localhost:8080/login", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
 
     if (!emaillog || !passwordlog) {
       setFlag(true);
@@ -32,53 +42,68 @@ function Login() {
     } else {
       setHome(!home);
       setFlag(false);
-      history1.push('/Home');
+      history1.push("/Home");
     }
   }
 
   return (
     <>
-    <div>
-      <SignNavBar/>
-    </div>
-    <div style={{margin:"150px 800px 0px 50px", backgroundColor:"rgba(25, 0, 155, 0.5)"}}>
-      {home ? (
-        <form onSubmit={handleLogin} style={{margin:"50px", padding: "100px 30px"}}>
-          <h3 style={{color: "white"}}>LogIn</h3>
-          <div className="form-group">
-            <label style={{color: "white"}}>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Enter email"
-              onChange={(event) => setEmaillog(event.target.value)}
-            />
-          </div>
+      <div>
+        <SignNavBar />
+      </div>
+      <div
+        style={{
+          margin: "150px 800px 0px 50px",
+          backgroundColor: "rgba(25, 0, 155, 0.5)",
+        }}
+      >
+        {home ? (
+          <form
+            onSubmit={handleLogin}
+            style={{ margin: "50px", padding: "100px 30px" }}
+          >
+            <h3 style={{ color: "white" }}>LogIn</h3>
+            <div className="form-group">
+              <label style={{ color: "white" }}>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter email"
+                onChange={(event) => setEmaillog(event.target.value)}
+              />
+            </div>
 
-          <div className="form-group">
-            <label style={{color: "white"}}>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={(event) => setPasswordlog(event.target.value)}
-            />
-          </div>
+            <div className="form-group">
+              <label style={{ color: "white" }}>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter password"
+                onChange={(event) => setPasswordlog(event.target.value)}
+              />
+            </div>
 
-          <button style={{ background: "radial-gradient(circle at 7.5% 24%, rgb(237, 161, 193) 0%, rgb(250, 178, 172) 25.5%, rgb(190, 228, 210) 62.3%, rgb(215, 248, 247) 93.8%)" }} type="submit" className="btn btn-dark btn-lg btn-block">
-            Login
-          </button>
+            <button
+              style={{
+                background:
+                  "radial-gradient(circle at 7.5% 24%, rgb(237, 161, 193) 0%, rgb(250, 178, 172) 25.5%, rgb(190, 228, 210) 62.3%, rgb(215, 248, 247) 93.8%)",
+              }}
+              type="submit"
+              className="btn btn-dark btn-lg btn-block"
+            >
+              Login
+            </button>
 
-          {flag && (
-            <Alert color="primary" variant="warning">
-              Fill correct Info else keep trying.
-            </Alert>
-          )}
-        </form>
-      ) : (
-        {navigateToHome}
-      )}
-    </div>
+            {flag && (
+              <Alert color="primary" variant="warning">
+                Fill correct Info else keep trying.
+              </Alert>
+            )}
+          </form>
+        ) : (
+          { navigateToHome }
+        )}
+      </div>
     </>
   );
 }

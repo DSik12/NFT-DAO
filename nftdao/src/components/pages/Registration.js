@@ -15,7 +15,7 @@ function Registration() {
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    if (!name || !email || !password ) {
+    if (!name || !email || !password) {
       setFlag(true);
     } else {
       setFlag(false);
@@ -24,12 +24,27 @@ function Registration() {
       setLogin(!login);
       // IPFS LOGIC ADD HERE {[EMAIL,PASSWORD]}
       //{[name, email, password]}
-      history2.push('/Login');
+      const registerdata = {
+        name: name,
+        email: email,
+        password: password,
+      };
+      const requestOptions = {
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registerdata),
+      };
+      fetch("http://localhost:8080/register", requestOptions)
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+      history2.push("/Login");
     }
   }
 
-  function navigateToLogin(){
-    history2.push('/Login');
+  function navigateToLogin() {
+    history2.push("/Login");
   }
 
   function handleClick() {
@@ -41,13 +56,19 @@ function Registration() {
       <div>
         <SignNavBar />
       </div>
-      <div style={{margin:"150px 900px 150px 70px",backgroundColor:"rgba(25, 0, 155, 0.3)",padding:"20px"}}>
+      <div
+        style={{
+          margin: "150px 900px 150px 70px",
+          backgroundColor: "rgba(25, 0, 155, 0.3)",
+          padding: "20px",
+        }}
+      >
         {" "}
         {login ? (
-          <form onSubmit={handleFormSubmit} >
-            <h3 style={{color: "white"}}>Register</h3>
+          <form onSubmit={handleFormSubmit}>
+            <h3 style={{ color: "white" }}>Register</h3>
             <div className="form-group">
-              <label style={{color: "white"}}>Name</label>
+              <label style={{ color: "white" }}>Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -58,7 +79,7 @@ function Registration() {
             </div>
 
             <div className="form-group">
-              <label style={{color: "white"}}>Email</label>
+              <label style={{ color: "white" }}>Email</label>
               <input
                 type="email"
                 className="form-control"
@@ -68,7 +89,7 @@ function Registration() {
             </div>
 
             <div className="form-group">
-              <label style={{color: "white"}}>Password</label>
+              <label style={{ color: "white" }}>Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -77,11 +98,22 @@ function Registration() {
               />
             </div>
 
-
-            <button style={{ background: "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)" }} type="submit" onSubmit={handleClick} className="btn btn-dark btn-lg btn-block">
+            <button
+              style={{
+                background:
+                  "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)",
+              }}
+              type="submit"
+              onSubmit={handleClick}
+              className="btn btn-dark btn-lg btn-block"
+            >
               Register
             </button>
-            <p style={{color: "white"}} onClick={navigateToLogin} className="forgot-password text-right">
+            <p
+              style={{ color: "white" }}
+              onClick={navigateToLogin}
+              className="forgot-password text-right"
+            >
               Already registered log in?
             </p>
             {flag && (
@@ -91,7 +123,7 @@ function Registration() {
             )}
           </form>
         ) : (
-          {navigateToLogin}
+          { navigateToLogin }
         )}
       </div>
     </>
