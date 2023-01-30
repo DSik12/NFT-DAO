@@ -32,6 +32,24 @@ function Login() {
     } else {
       setHome(!home);
       setFlag(false);
+      let postData1 = {
+        email:emaillog,
+        password: passwordlog
+      };
+      fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData1),
+      })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          console.log("Update registration successful.");
+        });
       history1.push('/Home');
     }
   }

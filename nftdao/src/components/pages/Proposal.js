@@ -6,6 +6,7 @@ const Proposal = () => {
   return (
     <div>
       <Navbar />
+
       <div className="proposalHeading">
         <h1>
           <span>VIEW</span> ALL <span>PROPOSALS</span>
