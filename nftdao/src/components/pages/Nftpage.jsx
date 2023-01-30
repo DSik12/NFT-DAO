@@ -31,19 +31,19 @@ const NftPage = () => {
         <div className='titleDisplay'>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={3}>
-              <NftCard nftValue={1} />
+              <NftCard nftValue={1} price = {150000000000} />
             </Grid>
             <Grid item xs={3}>
-              <NftCard nftValue={2} />
+              <NftCard nftValue={2} price = {180000000000} />
             </Grid>
             <Grid item xs={3}>
-              <NftCard nftValue={3} />
+              <NftCard nftValue={3} price = {250000000000} />
             </Grid>
             <Grid item xs={3}>
-              <NftCard nftValue={4}   />
+              <NftCard nftValue={4}  price = {190000000000}  />
             </Grid>
             <Grid item xs={3}>
-              <NftCard nftValue={5}  />
+              <NftCard nftValue={5}  price = {160000000000} />
             </Grid>
 
           </Grid>

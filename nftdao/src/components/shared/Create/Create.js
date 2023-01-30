@@ -1,15 +1,108 @@
 import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 import ModelViewer from "../../threeD/Modelrenderer";
+import Web3 from 'web3';
+import MyGovernorJson from '../../utils/MyGovernor.json'
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { useHistory } from "react-router-dom";
+
+import AddressJson from '../../utils/Address.json'
 import "./Create.css";
 
 export const Create = () => {
   //   const navigate = useHistory();
-  const [Address, setAddress] = useState("");
+  const [Address, setAddress] = useState("0x0000000000000000000000000000000000000000");
   const [Ether, setEther] = useState(0);
   const [Description, setDescription] = useState("");
   //   const [Data, setData] = useState("");
   const [Loading, setLoading] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+
+  const history = useHistory();
+
+  function navigateToRoute(route) {
+    history.push(route);
+  }
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    console.log('closed')
+    navigateToRoute('/Home')
+    setOpen(false);
+  }
+  
+  const style = {
+    position: 'absolute' ,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 450,
+    bgcolor: '#83ed84',
+    border: '2px solid #000',
+    boxShadow: 24,
+    borderRadius : '15px',
+    p: 4,
+  };
+
+  const titleStyle = {
+    fontWeight: 600,
+    fontSize: '1.5rem',
+    color: 'black'
+  }
+
+
+  var web3 = new Web3("http://127.0.0.1:8545/");
+  console.log('Treasury abi', MyGovernorJson['abi'])
+  var myContract = new web3.eth.Contract(MyGovernorJson['abi'], AddressJson['governorAddress'], {
+    from: AddressJson['userAddress'], // default from address
+    gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+  });
+
+  // var ethInBN = web3.utils.toBN(web3.utils.fromWei(100000000000, 'ether'))
+  // console.log('ETH in BN', ethInBN)
+
+  const encodedFunctionCall = web3.eth.abi.encodeFunctionCall({
+    name: 'releaseFunds',
+    type: 'function',
+    inputs: [{
+        type: 'address',
+        name: '_payee'
+    },{
+        type: 'uint256',
+        name: 'fundsToTransfer'
+    }]
+  }, [Address, web3.utils.toBN(Ether) ]);
+
+  const checkState = (proposalId) => {
+    myContract.methods.state(proposalId).call().then(res => {
+      console.log('State is',res)
+    })
+  }
+
+  const createProposal = () => {
+    //treasury address
+    myContract.methods.propose([AddressJson['treasuryAddress']],
+      [0],
+      [encodedFunctionCall],
+      Description
+    ).send().then(res => {
+      console.log('proposal object ', res)
+
+      var proposalId = res.events.ProposalCreated.returnValues[0]
+      console.log('Proposal Id', proposalId)
+      checkState(proposalId);
+      localStorage.setItem('proposalId',proposalId)
+      handleOpen();
+    }
+    )
+    localStorage.setItem('description',Description )
+  }
+
+  
+   
 
   const handleAddress = async (e) => {
     e.preventDefault();
@@ -61,7 +154,7 @@ export const Create = () => {
       <div className="formTitle">
       <h1>
       <span>CRE</span>ATE <span>PROPOSAL</span>
-    </h1>
+      </h1>
       </div>
       <div className="createDiv">
         <div className='proposal'>
@@ -109,13 +202,12 @@ export const Create = () => {
                 ></textarea>
               </div>
 
-              {!Loading ? (
                 <div>
-                  <button className="btn btn-dark btn-lg btn-block" style={{ background: "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)" }}>Create</button>
+                  <button className="btn btn-dark btn-lg btn-block" onClick={() => createProposal()}
+                  style={{ background: "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)" }}>
+                    Create</button>
                 </div>
-              ) : (
-                <p></p>
-              )}
+             
             </form>
             {/* <p>{Data}</p> */}
           </div>
@@ -124,6 +216,21 @@ export const Create = () => {
           <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
         </div>
       </div>
+      <Modal
+        open={open}
+        onClose={() => handleClose()}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box  sx={style}>
+          <Typography sx={titleStyle} id="modalText" variant="h6" component="h2">
+            Congratulations!! 
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            The Proposal has been created!
+          </Typography>
+        </Box>
+      </Modal>
     </>
   );
 };
