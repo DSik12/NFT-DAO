@@ -6,6 +6,7 @@ import TreasuryJson from '../../utils/Treasury.json'
 import AddressJson from '../../utils/Address.json'
 import AntPicOne from '../../../assets/AntPicOne.jpg'
 import AntPicTwo from '../../../assets/AntPicTwo.jpg'
+import ImageDisplay from '../../threeD/ImageLoder';
 
 export const NftCard = ({nftValue, price}) => {
 
@@ -101,13 +102,24 @@ export const NftCard = ({nftValue, price}) => {
             <div className='nftCardTitle'>
                 {nftJson[nftValue]['name']}
             </div>
-            <img src= {nftJson[nftValue]['uri']} alt='ant' height= "100px" width= "50px" />
+           <div
+                style={{
+                  height: "400px",
+                  width: "185px",
+                  borderRadius: "300px",
+                }}
+              >
+                <ImageDisplay
+                  imgpath=
+                    {nftJson[nftValue]['uri']}
+                />
+              </div>
             <div>
               Amount {ethPrice}
             </div>
             {
               !sold ? 
-              <div className='buyButton' onClick={() => buyNft()}>
+              <div class="button-91" onClick={() => buyNft()}>
                 Buy NFT
               </div> : 
               <div>

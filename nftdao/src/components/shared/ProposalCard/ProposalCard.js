@@ -51,16 +51,13 @@ const ProposalCard = () => {
 
   return (
     <div onClick = {() => navigateToRoute1('/0x98275ffddf84gfg873498708fhfjdshfjkk38ewrhjw')} className="proposalList" >
-      <div className="proposalCard" >
+      <div className="proposalCard">
         <div>
-          <img src={pic1}></img>
-          <span style={{ marginLeft: "40px" }}>
-            0x98275ffddf84gfg873498708fhfjdshfjkk38ewrhjw
+          {/* <img src={pic1}></img> */}
+          <span style={{ marginLeft: "350px" }}>
+          
           </span>
-          <span className="status">Closed</span>
-        </div>
-        <div>
-          <h4>Buy an Estate</h4>
+          {/* <span className="status">Closed</span> */}
         </div>
         <div>Propasal id - {proposatId}</div>
         <div>
