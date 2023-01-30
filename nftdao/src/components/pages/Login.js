@@ -17,8 +17,8 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
-    let pass = localStorage.getItem("UserPassword").replace(/"/g, "");
-    let mail = localStorage.getItem("UserEmail").replace(/"/g, "");
+    // let pass = localStorage.getItem("UserPassword").replace(/"/g, "");
+    // let mail = localStorage.getItem("UserEmail").replace(/"/g, "");
     const logindata = {
       email: emaillog,
       password: passwordlog,
@@ -32,18 +32,20 @@ function Login() {
     };
     fetch("http://localhost:8080/login", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
-
-    if (!emaillog || !passwordlog) {
-      setFlag(true);
-      console.log("EMPTY");
-    } else if (passwordlog !== pass || emaillog !== mail) {
-      setFlag(true);
-    } else {
-      setHome(!home);
-      setFlag(false);
-      history1.push("/Home");
-    }
+      .then((data) => {
+        console.log(data);
+        history1.push("/Home");
+      });
+    // if (!emaillog || !passwordlog) {
+    //   setFlag(true);
+    //   console.log("EMPTY");
+    // } else if (passwordlog !== pass || emaillog !== mail) {
+    //   setFlag(true);
+    // } else {
+    //   setHome(!home);
+    //   setFlag(false);
+    //   history1.push("/Home");
+    // }
   }
 
   return (

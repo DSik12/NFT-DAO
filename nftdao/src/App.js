@@ -1,7 +1,7 @@
 import "./App.css";
 import ModelViewer from "./components/threeD/Modelrenderer";
 import Home from "./components/pages/Home";
-import ProposalDetails from './components/pages/ProposalDetails'
+import ProposalDetails from "./components/pages/ProposalDetails";
 import Createpage from "./components/pages/Createpage";
 import Treasurypage from "./components/pages/Treasurypage";
 import Aboutpage from "./components/pages/Aboutpage";
@@ -12,17 +12,17 @@ import Delegatepage from "./components/pages/Delegatepage";
 import Proposal from "./components/pages/Proposal";
 import Registration from "./components/pages/Registration";
 import Login from "./components/pages/Login";
+import ImageDisplay from "./components/threeD/ImageLoder";
 
 function App() {
-
   return (
     <div>
       {/* <div id="threedcomp">
         <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
       </div> */}
-      <div >
+      <div>
         <BrowserRouter>
-          <Switch> 
+          <Switch>
             <Route exact path="/" component={Registration} />
             <Route path="/Home" component={Home} />
             <Route path="/ProposalDetails" component={ProposalDetails} />
@@ -33,10 +33,18 @@ function App() {
             <Route path="/About" element={<Aboutpage />} />
             {/* <Route path="/views/:id" element={<Detailspage />} /> */}
             <Route path="/Nft" component={Nftpage} />
-            <Route path="/Delegate" component={Delegatepage}  />
+            <Route path="/Delegate" component={Delegatepage} />
             <Route path="*" element={<NoPageFound />}></Route>
           </Switch>
         </BrowserRouter>
+      </div>
+      <div style={{ height: "500px", width: "100%" }}>
+        {/* <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} /> */}
+        <ImageDisplay
+          imgpath={
+            "https://mudemo.infura-ipfs.io/ipfs/QmPCg6s6BGGXi5qYrk99mF1Gp85M9WgUVuEvotRMh35xSX"
+          }
+        />
       </div>
     </div>
   );
