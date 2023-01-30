@@ -14,6 +14,8 @@ const NftPage = () => {
     history.push(route);
   }
 
+
+
   return (
     <div>
         <Navbar/>
@@ -29,29 +31,21 @@ const NftPage = () => {
         <div className='titleDisplay'>
           <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={3}>
-              <NftCard title ={"Create Proposal"} />
+              <NftCard nftValue={1} />
             </Grid>
             <Grid item xs={3}>
-              <NftCard title ={"Treasury"}  />
+              <NftCard nftValue={2} />
             </Grid>
             <Grid item xs={3}>
-              <NftCard title ={"NFTs"}  />
+              <NftCard nftValue={3} />
             </Grid>
             <Grid item xs={3}>
-              <NftCard title ={"Delegate"}  />
+              <NftCard nftValue={4}   />
             </Grid>
             <Grid item xs={3}>
-              <NftCard title ={"Delegate"}  />
+              <NftCard nftValue={5}  />
             </Grid>
-            <Grid item xs={3}>
-              <NftCard title ={"Delegate"}  />
-            </Grid>
-            <Grid item xs={3}>
-              <NftCard title ={"Delegate"}  />
-            </Grid>
-            <Grid item xs={3}>
-              <NftCard title ={"Delegate"}  />
-            </Grid>
+
           </Grid>
           </div>
     </div>
