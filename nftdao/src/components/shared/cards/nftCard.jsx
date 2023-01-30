@@ -1,10 +1,73 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Web3 from 'web3';
 import './nftCard.css'
-
+import GovernanceTokenJson from '../../utils/GovernanceToken.json'
+import TreasuryJson from '../../utils/Treasury.json'
+import AddressJson from '../../utils/Address.json'
 import AntPicOne from '../../../assets/AntPicOne.jpg'
 import AntPicTwo from '../../../assets/AntPicTwo.jpg'
 
-export const NftCard = ({nftValue}) => {
+export const NftCard = ({nftValue, price}) => {
+
+  const [sold, setSold] = useState(false);
+
+  var web3 = new Web3("http://127.0.0.1:8545/");
+  console.log('Token abi', GovernanceTokenJson['abi'])
+  var myContract = new web3.eth.Contract(GovernanceTokenJson['abi'], AddressJson['governanceTokenAddress'], {
+    from: AddressJson['userAddress'], // default from address
+    gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
+  });
+
+  const checkVotes = (userAddress) => {
+    myContract.methods.getVotes(userAddress).call().then((res) => {
+      console.log('Get votess ',res)
+    })
+  }
+
+  const selfDelegate = (userAddress) => {
+    myContract.methods.delegate(userAddress).send().then((res) => {
+      console.log('delegated member ',res)
+      checkVotes(userAddress)
+    })
+  }
+
+
+
+  var ethPrice = web3.utils.fromWei(price.toString(),'ether')
+  const sendTransaction = () => {
+    web3.eth.sendTransaction({
+      from: AddressJson['userAddress2'],
+      to: AddressJson['treasuryAddress'],
+      value: price
+    })
+    .then(function(receipt){
+      console.log('send money ',receipt)
+      web3.eth.getBalance(AddressJson['userAddress2']).then(res => {
+        console.log('the remainder balance', res)
+      })
+    });
+  }
+
+  const buyNft = () => {
+    console.log('inside buy nft')
+    myContract.methods.mintNFT(AddressJson['userAddress2'], 3).send().then(res => {
+      console.log('NFT minted',res)
+      sendTransaction()
+      selfDelegate(AddressJson['userAddress2'])
+    })
+  }
+
+  myContract.methods.ownerOf(nftValue).call().then(res => {
+    console.log('owner of',nftValue,res)
+    setSold(true)
+  }).catch(error => {
+            console.error('errorn in ',nftValue)
+            setSold(false)
+          })
+
+ 
+
+
 
   const nftJson = {
     "1": {
@@ -39,9 +102,19 @@ export const NftCard = ({nftValue}) => {
                 {nftJson[nftValue]['name']}
             </div>
             <img src= {nftJson[nftValue]['uri']} alt='ant' height= "100px" width= "50px" />
-            <div className='buyButton'>
-                Buy NFT
+            <div>
+              Amount {ethPrice}
             </div>
+            {
+              !sold ? 
+              <div className='buyButton' onClick={() => buyNft()}>
+                Buy NFT
+              </div> : 
+              <div>
+                Sold
+              </div>
+            }
+            
         </div>
     </div>
   )
