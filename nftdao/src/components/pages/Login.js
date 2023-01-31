@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Alert } from "react-bootstrap";
 import { SignNavBar } from "../shared/SignNavBar/SignNavBar";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
@@ -9,18 +8,10 @@ function Login() {
   const [emaillog, setEmaillog] = useState(" ");
   const [passwordlog, setPasswordlog] = useState(" ");
 
-  const [flag, setFlag] = useState(false);
-
-  const [home, setHome] = useState(true);
-
-  function navigateToHome() {
-    history1.push("/Home");
-  }
+  const [home, setHome] = useState(false);
 
   function handleLogin(e) {
     e.preventDefault();
-    // let pass = localStorage.getItem("UserPassword").replace(/"/g, "");
-    // let mail = localStorage.getItem("UserEmail").replace(/"/g, "");
     const logindata = {
       email: emaillog,
       password: passwordlog,
@@ -35,8 +26,11 @@ function Login() {
     fetch("http://localhost:8080/login", requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        history1.push("/Home");
+        if(data.message == undefined) {
+          setHome(true);
+        } else{
+          history1.push("/Home");
+        }
       });
   }
 
@@ -55,15 +49,13 @@ function Login() {
         <div></div>
       </div>
       <div className="gridStyle1">
-
-      <div
-        style={{
-          margin: "0px 80px",
-          backgroundColor: "rgba(25, 0, 155, 0.5)",
-          width:"600px"
-        }}
-      >
-        
+        <div
+          style={{
+            margin: "0px 80px",
+            backgroundColor: "rgba(25, 0, 155, 0.5)",
+            width: "600px",
+          }}
+        >
           <form
             onSubmit={handleLogin}
             style={{ margin: "50px", padding: "100px 30px" }}
@@ -99,18 +91,16 @@ function Login() {
             >
               Login
             </button>
-
-            {flag && (
-              <Alert color="primary" variant="warning">
-                Fill correct Info else keep trying.
-              </Alert>
+            {home && (
+              <div className="alert alert-danger" role="alert">
+                Email or Password is wrong
+              </div>
             )}
           </form>
-          </div>
-          <div id="threedcomp" style={{ width: "640px", height: "640px" }}>
+        </div>
+        <div id="threedcomp" style={{ width: "640px", height: "640px" }}>
           <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
         </div>
-
       </div>
     </>
   );

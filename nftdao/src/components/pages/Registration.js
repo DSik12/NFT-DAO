@@ -4,14 +4,14 @@ import { Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./Registration.css";
 import ModelViewer from "../threeD/Modelrenderer";
-// import axios from "axios";
-// import Fetch from "../../config/useFetch.js";
 
 function Registration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [flag, setFlag] = useState(false);
+  const [registration, setRegistration] = useState(false);
   const history2 = useHistory();
 
   function handleFormSubmit(e) {
@@ -21,10 +21,6 @@ function Registration() {
       setFlag(true);
     } else {
       setFlag(false);
-      localStorage.setItem("UserEmail", JSON.stringify(email));
-      localStorage.setItem("UserPassword", JSON.stringify(password));
-      // IPFS LOGIC ADD HERE {[EMAIL,PASSWORD]}
-      //{[name, email, password]}
       const registerdata = {
         name: name,
         email: email,
@@ -37,10 +33,21 @@ function Registration() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(registerdata),
       };
+
+      console.log(registerdata);
       fetch("http://localhost:8080/register", requestOptions)
         .then((response) => response.json())
-        .then((data) => console.log(data));
-      history2.push("/Login");
+        .then((data) => {
+          if(data.message = 'User already Present'){
+            console.log(data);
+            setRegistration(true);
+          }
+          else{
+            console.log(data)
+            setRegistration(false);
+            history2.push("/Login");
+          }
+        });
     }
   }
 
@@ -67,7 +74,7 @@ function Registration() {
             margin: "90px",
             backgroundColor: "rgba(25, 0, 155, 0.3)",
             padding: "20px",
-            width:"500px"
+            width: "500px",
           }}
         >
           <form onSubmit={handleFormSubmit}>
@@ -113,6 +120,11 @@ function Registration() {
             >
               Register
             </button>
+            {registration && (
+              <div className="alert alert-danger" role="alert">
+                User already registered
+              </div>
+            )}
             <p
               style={{ color: "white" }}
               onClick={navigateToLogin}
@@ -122,7 +134,7 @@ function Registration() {
             </p>
             {flag && (
               <Alert color="primary" variant="danger">
-                I got it you are in hurry! But every Field is important!
+                ALL FIELDS ARE MANDATORY
               </Alert>
             )}
           </form>
