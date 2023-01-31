@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { SignNavBar } from "../shared/SignNavBar/SignNavBar";
 import { useHistory } from "react-router-dom";
+import "./Login.css";
+import ModelViewer from "../threeD/Modelrenderer";
 function Login() {
   const history1 = useHistory();
   const [emaillog, setEmaillog] = useState(" ");
@@ -36,16 +38,6 @@ function Login() {
         console.log(data);
         history1.push("/Home");
       });
-    // if (!emaillog || !passwordlog) {
-    //   setFlag(true);
-    //   console.log("EMPTY");
-    // } else if (passwordlog !== pass || emaillog !== mail) {
-    //   setFlag(true);
-    // } else {
-    //   setHome(!home);
-    //   setFlag(false);
-    //   history1.push("/Home");
-    // }
   }
 
   return (
@@ -53,13 +45,25 @@ function Login() {
       <div>
         <SignNavBar />
       </div>
+
+      <div className="swatch">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="gridStyle1">
+
       <div
         style={{
-          margin: "150px 800px 0px 50px",
+          margin: "0px 80px",
           backgroundColor: "rgba(25, 0, 155, 0.5)",
+          width:"600px"
         }}
       >
-        {home ? (
+        
           <form
             onSubmit={handleLogin}
             style={{ margin: "50px", padding: "100px 30px" }}
@@ -102,9 +106,11 @@ function Login() {
               </Alert>
             )}
           </form>
-        ) : (
-          { navigateToHome }
-        )}
+          </div>
+          <div id="threedcomp" style={{ width: "640px", height: "640px" }}>
+          <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
+        </div>
+
       </div>
     </>
   );

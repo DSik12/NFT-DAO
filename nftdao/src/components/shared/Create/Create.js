@@ -212,7 +212,7 @@ export const Create = () => {
             {/* <p>{Data}</p> */}
           </div>
         </div>
-        <div id="threedcomp">
+        <div id="threedcomp" style={{ width: "640px", height: "640px" }}>
           <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
         </div>
       </div>

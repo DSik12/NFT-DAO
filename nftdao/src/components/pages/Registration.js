@@ -2,7 +2,9 @@ import { SignNavBar } from "../shared/SignNavBar/SignNavBar.js";
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import "./Registration.css";
+import ModelViewer from "../threeD/Modelrenderer";
+// import axios from "axios";
 // import Fetch from "../../config/useFetch.js";
 
 function Registration() {
@@ -51,69 +53,83 @@ function Registration() {
       <div>
         <SignNavBar />
       </div>
-      <div
-        style={{
-          margin: "150px 900px 150px 70px",
-          backgroundColor: "rgba(25, 0, 155, 0.3)",
-          padding: "20px",
-        }}
-      >
-        <form onSubmit={handleFormSubmit}>
-          <h3 style={{ color: "white" }}>Register</h3>
-          <div className="form-group">
-            <label style={{ color: "white" }}>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter Full Name"
-              name="name"
-              onChange={(event) => setName(event.target.value)}
-            />
-          </div>
+      <div className="swatch1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div className="gridStyle">
+        <div
+          style={{
+            margin: "90px",
+            backgroundColor: "rgba(25, 0, 155, 0.3)",
+            padding: "20px",
+            width:"500px"
+          }}
+        >
+          <form onSubmit={handleFormSubmit}>
+            <h3 style={{ color: "white" }}>Register</h3>
+            <div className="form-group">
+              <label style={{ color: "white" }}>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Full Name"
+                name="name"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </div>
 
-          <div className="form-group">
-            <label style={{ color: "white" }}>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Enter email"
-              onChange={(event) => setEmail(event.target.value)}
-            />
-          </div>
+            <div className="form-group">
+              <label style={{ color: "white" }}>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter email"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </div>
 
-          <div className="form-group">
-            <label style={{ color: "white" }}>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div>
+            <div className="form-group">
+              <label style={{ color: "white" }}>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter password"
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </div>
 
-          <button
-            style={{
-              background:
-                "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)",
-            }}
-            type="submit"
-            className="btn btn-dark btn-lg btn-block"
-          >
-            Register
-          </button>
-          <p
-            style={{ color: "white" }}
-            onClick={navigateToLogin}
-            className="forgot-password text-right"
-          >
-            Already registered log in?
-          </p>
-          {flag && (
-            <Alert color="primary" variant="danger">
-              I got it you are in hurry! But every Field is important!
-            </Alert>
-          )}
-        </form>
+            <button
+              style={{
+                background:
+                  "radial-gradient(523px at 7.1% 19.3%, rgb(147, 15, 255) 2%, rgb(5, 49, 255) 100.7%)",
+              }}
+              type="submit"
+              className="btn btn-dark btn-lg btn-block"
+            >
+              Register
+            </button>
+            <p
+              style={{ color: "white" }}
+              onClick={navigateToLogin}
+              className="forgot-password text-right"
+            >
+              Already registered log in?
+            </p>
+            {flag && (
+              <Alert color="primary" variant="danger">
+                I got it you are in hurry! But every Field is important!
+              </Alert>
+            )}
+          </form>
+        </div>
+        <div id="threedcomp" style={{ width: "640px", height: "640px" }}>
+          <ModelViewer scale="0.09" modelPath={"minecraft4.glb"} />
+        </div>
       </div>
     </>
   );
